@@ -1,0 +1,16 @@
+{
+   "policies": [
+        {
+            "name": "Age Greater 60",
+            "fileName": "my-script-policy.js",
+            "description": "My Policy from a JS file"
+        },
+        {
+            "name": "Withdrawal Condition",
+            "fileName": "withdrawal-condition.js",
+            "description": "Withdrawal Amount Based on Age"
+        }
+    ]	
+}
+
+
