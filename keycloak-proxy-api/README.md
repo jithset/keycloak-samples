@@ -65,7 +65,7 @@ my-api         | 	at java.base/java.lang.Thread.run(Thread.java:831)
 
 ```
 
-# How to Run
+## How to Run
 
 ```
 docker-compose -f ./infra/docker-compose.yml up
