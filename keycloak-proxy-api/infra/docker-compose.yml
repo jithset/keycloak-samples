@@ -8,6 +8,7 @@ services:
             - ./nginx.conf:/etc/nginx/nginx.conf
         depends_on: 
             - my-api
+            - my-keycloak
         networks:
             - my-net
         ports:
@@ -18,13 +19,15 @@ services:
         volumes: 
             - "../keycloak-proxy/:/app"
             - "~/.m2:/root/.m2"
-        ports:
-          - "8085:8085"
+        # ports:
+        #   - "8085:8085"
         working_dir: /app
         command: "mvn compile -Dquarkus.http.host=0.0.0.0 quarkus:dev"
         container_name: my-api
         networks:
             - my-net
+        depends_on: 
+            - my-keycloak
 
     my-keycloak:
         image: jboss/keycloak:12.0.4
@@ -32,7 +35,7 @@ services:
         volumes: 
             - ./realm-export.json:/home/realm-export.json
         environment:
-            KEYCLOAK_FRONTEND_URL: 'http://localhost/auth/'
+            # KEYCLOAK_FRONTEND_URL: 'http://my-keycloak:8080/auth/'
             PROXY_ADDRESS_FORWARDING: "true"
             KEYCLOAK_USER: admin
             KEYCLOAK_PASSWORD: admin
