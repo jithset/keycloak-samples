@@ -1,0 +1,8 @@
+<button *ngIf="isLoggedIn" type="button" (click)="logout()">Log out</button>
+
+
+<h3 *ngIf="publicdata !=null">Success! {{publicdata.message}}</h3>
+
+
+<h3 *ngIf="protecteddata !=null">Success! {{protecteddata.message}}</h3>
+
